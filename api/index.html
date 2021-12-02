@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIREST PHP</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            border: 2px solid grey;
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>APIREST PHP</h1>
+
+    <div>
+        <h2>GET:</h2>
+
+        <h3>http://localhost/api/paises</h3>
+        <p>Obtiene todos los paises</p>
+
+        <h3>http://localhost/api/paises/$id</h3>
+        <p>Obtiene el pais con el id especificado</p>
+    </div>
+
+    <div>
+        <h2>POST:</h2>
+        <h3>http://localhost/api/paises</h3>
+        <p>JSON:</p>
+        <p>{<br>
+            "nombre": "nombrePais",<br>
+            "habitantes": 0<br>
+            }
+        </p>
+        <p>Crea un pais</p>
+    </div>
+
+    <div>
+        <h2>PUT:</h2>
+        <h3>http://localhost/api/paises/$id</h3>
+        <p>JSON:</p>
+        <p>{<br>
+            "nombre": "nombrePais",<br>
+            "habitantes": 0<br>
+            }
+        </p>
+        <p>Reemplaza los datos del pais que corresponda con el id especificado</p>
+    </div>
+
+    <div>
+        <h2>DELETE:</h2>
+        <h3>http://localhost/api/paises/$id</h3>
+        <p>Elimina el pais que corresponda con el id especificado</p>
+    </div>
+</body>
+
+</html>
