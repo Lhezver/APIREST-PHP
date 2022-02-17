@@ -1,9 +1,5 @@
 <?php
-	$username = 'root';
-	$servername = 'localhost';
-	$password = 'root';
-	$dbname = 'api';
-	
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	mysqli_set_charset($conn, 'utf8');
+	$dsn = 'mysql:host=localhost;dbname=api;charset=UTF8';
+	$usuario = 'root';
+	$contrasenia = 'root';
 ?>
