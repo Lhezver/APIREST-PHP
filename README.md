@@ -1,18 +1,18 @@
 # APIREST-PHP
 ## GET:
 
-http://localhost/api/paises
+http://localhost/APIREST-PHP/paises
 
 Obtiene todos los paises
 
-http://localhost/api/paises/$id
+http://localhost/APIREST-PHP/paises/$id
 
 Obtiene el pais con el id especificado
 
 
 ## POST:
 
-http://localhost/api/paises
+http://localhost/APIREST-PHP/paises
 
 JSON:
 
@@ -27,7 +27,7 @@ Crea un pais
 
 ## PUT:
 
-http://localhost/api/paises/$id
+http://localhost/APIREST-PHP/paises/$id
 
 JSON:
 
@@ -42,7 +42,7 @@ Reemplaza los datos del pais que corresponda con el id especificado
 
 ## DELETE:
 
-http://localhost/api/paises/$id
+http://localhost/APIREST-PHP/paises/$id
 
 Elimina el pais que corresponda con el id especificado
 
