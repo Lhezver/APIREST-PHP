@@ -84,16 +84,28 @@ try {
 			if (isset($id) && is_numeric($id)) {
 
 				$postBody = file_get_contents("php://input");
+				
 				$datos = json_decode($postBody, true);
 
-				$sentencia = $conn->prepare('UPDATE paises SET paises.nombre = :nombre, paises.habitantes = :habitantes WHERE paises.id = :id;');
-				$sentencia->bindParam(':nombre', $datos['nombre'], PDO::PARAM_STR);
-				$sentencia->bindParam(':habitantes', $datos['habitantes'], PDO::PARAM_INT);
-				$sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+				$sentencia = $conn->prepare('UPDATE paises SET paises.nombre = COALESCE(:nombre, paises.nombre), paises.habitantes = COALESCE(:habitantes, paises.habitantes) WHERE paises.id = :id;');
+				if(isset($datos['nombre'])){
+					$sentencia->bindValue(':nombre', $datos['nombre'], PDO::PARAM_STR);
+				}else{
+					$sentencia->bindValue(':nombre', null);
+				}
+				if(isset($datos['habitantes'])){
+					$sentencia->bindValue(':habitantes', $datos['habitantes'], PDO::PARAM_INT);
+				}else{
+					$sentencia->bindValue(':habitantes', null);
+				}
+				
+				$sentencia->bindValue(':id', $id, PDO::PARAM_INT);
 
 				if ($sentencia->execute()) {
 					$sqlselect = 'SELECT * FROM paises WHERE paises.id = ' . $id;
-					$result = $conn->query('SELECT * FROM paises WHERE paises.id = ' . $id, PDO::FETCH_ASSOC);
+					$sentencia = $conn->query('SELECT * FROM paises WHERE paises.id = ' . $id);
+					$sentencia->execute();
+					$result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 					$postBody = null;
 					$sentencia = null;
